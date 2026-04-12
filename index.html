@@ -1443,6 +1443,55 @@
   .nav-item.active { color: var(--text); }
   .nav-item svg { width: 22px; height: 22px; }
 
+  /* Goal tracking tiles */
+  .home-goals { margin: 20px 20px 0; }
+  .home-goals-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .goal-tiles { display: flex; gap: 10px; }
+  .goal-tile {
+    flex: 1;
+    height: 130px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    cursor: pointer;
+  }
+  .goal-tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    border-radius: 16px;
+  }
+  .goal-tile-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .goal-tile-water .goal-tile-bg  { background-color: #4A7C8E; background-image: radial-gradient(circle at 30% 70%, #6BAEC4 0%, #2C5F72 100%); }
+  .goal-tile-steps .goal-tile-bg  { background-color: #5A6650; background-image: radial-gradient(circle at 70% 30%, #7A8C6E 0%, #3A4432 100%); }
+  .goal-tile-sleep .goal-tile-bg  { background-color: #6B5B7B; background-image: radial-gradient(circle at 50% 50%, #8C7A9C 0%, #3D2F52 100%); }
+  .goal-tile-val {
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .goal-tile-label {
+    position: relative;
+    z-index: 1;
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
   /* ════════════════════════════
      PROGRAMS LIST SCREEN
   ════════════════════════════ */
@@ -2341,6 +2390,27 @@
         <div class="home-macro">
           <div class="macro-ring">100<br><span>100</span></div>
           <div class="macro-label">Fibre</div>
+        </div>
+      </div>
+    </div>
+    <!-- Goal Tracking -->
+    <div class="home-goals">
+      <div class="home-goals-title">Goal Tracking</div>
+      <div class="goal-tiles">
+        <div class="goal-tile goal-tile-water">
+          <div class="goal-tile-bg"></div>
+          <div class="goal-tile-val">0 ml</div>
+          <div class="goal-tile-label">Water</div>
+        </div>
+        <div class="goal-tile goal-tile-steps">
+          <div class="goal-tile-bg"></div>
+          <div class="goal-tile-val">0</div>
+          <div class="goal-tile-label">Steps</div>
+        </div>
+        <div class="goal-tile goal-tile-sleep">
+          <div class="goal-tile-bg"></div>
+          <div class="goal-tile-val">0 hrs</div>
+          <div class="goal-tile-label">Sleep</div>
         </div>
       </div>
     </div>
