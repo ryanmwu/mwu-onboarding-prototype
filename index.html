@@ -453,7 +453,7 @@
   /* ════════════════════════════
      LOADING SCREEN
   ════════════════════════════ */
-  #screen-loading {
+  #screen-loading, #screen-loading-meal {
     background: var(--text);
   }
   .loading-inner {
@@ -1638,26 +1638,26 @@
     <div class="intro-steps">
       <div class="intro-step">
         <div class="intro-step-dot">💪</div>
-        <div class="intro-step-text"><strong>Personalised to you</strong> — your goals, your level, your lifestyle</div>
+        <div class="intro-step-text"><strong>Personalised to you.</strong> Your goals, your level, your lifestyle.</div>
       </div>
       <div class="intro-step">
         <div class="intro-step-dot">📋</div>
-        <div class="intro-step-text"><strong>Expert-designed Programs</strong> — built by our coaches for real results</div>
+        <div class="intro-step-text"><strong>Expert-designed Programs,</strong> built by our coaches for real results.</div>
       </div>
       <div class="intro-step">
         <div class="intro-step-dot">🤝</div>
-        <div class="intro-step-text"><strong>A community behind you</strong> — thousands of women on the same journey</div>
+        <div class="intro-step-text"><strong>A community behind you.</strong> Thousands of women on the same journey.</div>
       </div>
     </div>
     <div class="intro-timer">
       <div class="intro-timer-dot"></div>
-      7 questions · takes about 2 minutes
+      8 questions · takes about 2 minutes
     </div>
   </div>
   <div class="cta-footer">
     <button class="btn-primary" onclick="skippedQuiz=false;showScreen('screen-goal')">LET'S GO</button>
     <div style="text-align:center;margin-top:16px;">
-      <span onclick="skippedQuiz=true;showScreen('screen-iap')" style="font-size:12px;color:var(--light);cursor:pointer;letter-spacing:0.03em;">Skip — I'll choose my own Program</span>
+      <span onclick="skippedQuiz=true;browseAllFlow=true;goToPrograms()" style="font-size:12px;color:var(--light);cursor:pointer;letter-spacing:0.03em;">Skip. I'll choose my own Program.</span>
     </div>
   </div>
 </div>
@@ -1674,7 +1674,7 @@
   </div>
   <div class="content">
     <h1 class="screen-title">What is your<br>Primary Fitness<br>Goal?</h1>
-    <p class="screen-subtitle">Be honest — there's no wrong answer. This shapes everything.</p>
+    <p class="screen-subtitle">Be honest. There's no wrong answer. This shapes everything.</p>
     <div class="options-list" id="goal-options">
       <div class="option-card" onclick="selectOption('goal','build-muscle',this)">
         <div class="option-icon">💪</div>
@@ -1712,14 +1712,14 @@
         <div class="option-icon">🏆</div>
         <div class="option-text">
           <div class="option-label">Build Muscle & Lose Weight</div>
-          <div class="option-desc">The best of both — recomp and transform</div>
+          <div class="option-desc">The best of both. Recomp and transform.</div>
         </div>
         <div class="option-check">✓</div>
       </div>
     </div>
   </div>
   <div class="cta-footer">
-    <button class="btn-primary" id="btn-goal" disabled onclick="showScreen('screen-style')">CONTINUE</button>
+    <button class="btn-primary" id="btn-goal" disabled onclick="showScreen('screen-activity')">CONTINUE</button>
   </div>
 </div>
 
@@ -1796,13 +1796,13 @@
   </div>
   <div class="content">
     <h1 class="screen-title">What is your<br>Current Fitness<br>Level?</h1>
-    <p class="screen-subtitle">So we can pitch the intensity just right — not too easy, not too overwhelming.</p>
+    <p class="screen-subtitle">So we can pitch the intensity just right. Not too easy, not too overwhelming.</p>
     <div class="options-list" id="level-options">
       <div class="option-card" onclick="selectOption('level','brand-new',this)">
         <div class="option-icon">🌱</div>
         <div class="option-text">
           <div class="option-label">Brand New To Fitness</div>
-          <div class="option-desc">Just getting started — welcome, you're in the right place</div>
+          <div class="option-desc">Just getting started. Welcome, you're in the right place.</div>
         </div>
         <div class="option-check">✓</div>
       </div>
@@ -1855,7 +1855,7 @@
         <div class="option-icon">🗺️</div>
         <div class="option-text">
           <div class="option-label">Knowing Where to Start</div>
-          <div class="option-desc">So much noise out there — we'll cut through it</div>
+          <div class="option-desc">So much noise out there. We'll cut through it.</div>
         </div>
         <div class="option-check">✓</div>
       </div>
@@ -1924,7 +1924,7 @@
         <div class="option-icon">🤰</div>
         <div class="option-text">
           <div class="option-label">Pregnant</div>
-          <div class="option-desc">Currently expecting — prenatal-friendly workouts</div>
+          <div class="option-desc">Currently expecting. Prenatal-friendly workouts.</div>
         </div>
         <div class="option-check">✓</div>
       </div>
@@ -1955,16 +1955,10 @@
   </div>
   <div class="content">
     <h1 class="screen-title">Any Dietary<br>Preferences?</h1>
-    <p class="screen-subtitle">Select all that apply — we'll make sure your nutrition guidance fits your lifestyle.</p>
+    <p class="screen-subtitle">Select all that apply. We'll make sure your nutrition guidance fits your lifestyle.</p>
     <div class="diet-chips">
-      <div class="diet-chip" id="chip-no-pref" onclick="toggleDiet('no-pref',this)">
-        <div class="chip-dot"></div>No Preference
-      </div>
-      <div class="diet-chip" onclick="toggleDiet('vegan',this)">
-        <div class="chip-dot"></div>Vegan
-      </div>
-      <div class="diet-chip" onclick="toggleDiet('vegetarian',this)">
-        <div class="chip-dot"></div>Vegetarian
+      <div class="diet-chip" id="chip-no-restrictions" onclick="toggleDiet('no-restrictions',this)">
+        <div class="chip-dot"></div>No Restrictions
       </div>
       <div class="diet-chip" onclick="toggleDiet('gluten-free',this)">
         <div class="chip-dot"></div>Gluten Free
@@ -1972,14 +1966,23 @@
       <div class="diet-chip" onclick="toggleDiet('dairy-free',this)">
         <div class="chip-dot"></div>Dairy Free
       </div>
-      <div class="diet-chip" onclick="toggleDiet('keto',this)">
-        <div class="chip-dot"></div>Keto
+      <div class="diet-chip" onclick="toggleDiet('seafood-free',this)">
+        <div class="chip-dot"></div>Seafood Free
       </div>
-      <div class="diet-chip" onclick="toggleDiet('high-protein',this)">
-        <div class="chip-dot"></div>High Protein
+      <div class="diet-chip" onclick="toggleDiet('red-meat-free',this)">
+        <div class="chip-dot"></div>Red Meat Free
       </div>
-      <div class="diet-chip" onclick="toggleDiet('low-carb',this)">
-        <div class="chip-dot"></div>Low Carb
+      <div class="diet-chip" onclick="toggleDiet('nut-free',this)">
+        <div class="chip-dot"></div>Nut Free
+      </div>
+      <div class="diet-chip" onclick="toggleDiet('pescetarian',this)">
+        <div class="chip-dot"></div>Pescetarian
+      </div>
+      <div class="diet-chip" onclick="toggleDiet('vegetarian',this)">
+        <div class="chip-dot"></div>Vegetarian
+      </div>
+      <div class="diet-chip" onclick="toggleDiet('vegan',this)">
+        <div class="chip-dot"></div>Vegan
       </div>
     </div>
   </div>
@@ -1989,7 +1992,52 @@
 </div>
 
 <!-- ════════════════════════════════════════
-     8. STATS (DOB · HEIGHT · WEIGHT)
+     8. PHYSICAL ACTIVITY LEVEL
+════════════════════════════════════════ -->
+<div class="screen" id="screen-activity">
+  <div class="status-bar"><span>9:41</span><span>▪▪▪ ≋ ▮</span></div>
+  <div class="progress-wrap" id="progress-activity"></div>
+  <div class="nav-header">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <div></div>
+  </div>
+  <div class="content">
+    <h1 class="screen-title">What is your<br>Physical Activity<br>Level?</h1>
+    <p class="screen-subtitle">This helps us calculate the right calories for your meal guide.</p>
+    <div class="options-list" id="activity-options">
+      <div class="option-card" onclick="selectOption('activity','active',this)">
+        <div class="option-icon">🏃‍♀️</div>
+        <div class="option-text">
+          <div class="option-label">Active</div>
+          <div class="option-desc">Physically demanding job or structured exercise most days</div>
+        </div>
+        <div class="option-check">✓</div>
+      </div>
+      <div class="option-card" onclick="selectOption('activity','moderate',this)">
+        <div class="option-icon">🚶‍♀️</div>
+        <div class="option-text">
+          <div class="option-label">Moderate</div>
+          <div class="option-desc">Some regular activity plus structured exercise 3 to 4 times per week</div>
+        </div>
+        <div class="option-check">✓</div>
+      </div>
+      <div class="option-card" onclick="selectOption('activity','sedentary',this)">
+        <div class="option-icon">💻</div>
+        <div class="option-text">
+          <div class="option-label">Sedentary</div>
+          <div class="option-desc">Mostly desk-based with little to no structured exercise currently</div>
+        </div>
+        <div class="option-check">✓</div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-footer">
+    <button class="btn-primary" id="btn-activity" onclick="onActivityContinue()" disabled>CONTINUE</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     9. STATS (DOB · HEIGHT · WEIGHT)
 ════════════════════════════════════════ -->
 <div class="screen" id="screen-stats">
   <div class="status-bar"><span>9:41</span><span>▪▪▪ ≋ ▮</span></div>
@@ -2016,7 +2064,7 @@
     <p style="font-size:12px;color:var(--light);line-height:1.5;margin-top:4px;">Your data is private and used only to personalise your experience. You can update these anytime in your profile.</p>
   </div>
   <div class="cta-footer">
-    <button class="btn-primary" id="btn-stats" onclick="startLoading()" disabled>FIND MY PROGRAM</button>
+    <button class="btn-primary" id="btn-stats" onclick="onStatsContinue()" disabled>FIND MY PROGRAM</button>
   </div>
 </div>
 
@@ -2054,6 +2102,39 @@
 </div>
 
 <!-- ════════════════════════════════════════
+     9b. LOADING — MEAL GUIDE (SKIP FLOW)
+════════════════════════════════════════ -->
+<div class="screen" id="screen-loading-meal">
+  <div class="loading-inner">
+    <div class="loading-logo">
+      <div class="mwu-logo on-dark">MOVE<span class="dot">.</span>WITHUS</div>
+    </div>
+    <div class="loading-ring"></div>
+    <div class="loading-steps">
+      <div class="loading-step" id="mlstep-1">
+        <div class="step-tick">✓</div>
+        Calculating your calorie goal
+      </div>
+      <div class="loading-step" id="mlstep-2">
+        <div class="step-tick">✓</div>
+        Building your personalised meal guide
+      </div>
+      <div class="loading-step" id="mlstep-3">
+        <div class="step-tick">✓</div>
+        Matching recipes to your preferences
+      </div>
+      <div class="loading-step" id="mlstep-4">
+        <div class="step-tick">✓</div>
+        Getting everything ready for you
+      </div>
+    </div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="loading-bar-meal"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
      10. RECOMMENDATION
 ════════════════════════════════════════ -->
 <div class="screen" id="screen-recommendation">
@@ -2068,6 +2149,7 @@
     <div class="status-bar on-dark" style="position:relative;z-index:3;">
       <span>9:41</span><span>▪▪▪ ≋ ▮</span>
     </div>
+    <button class="back-btn" onclick="goBack()" style="position:absolute;top:48px;left:20px;z-index:4;color:#fff;opacity:0.85;">←</button>
     <div class="rec-hero-content">
       <div class="rec-eyebrow">✦ Your best match</div>
       <div class="rec-prog-name" id="rec-prog-name">GLUTE LAB 4.0</div>
@@ -2128,7 +2210,7 @@
   </div>
   <div class="rec-cta-footer">
     <button class="btn-primary" onclick="showScreen('screen-almost')" style="margin-bottom:10px;">START THIS PROGRAM</button>
-    <button class="btn-outline" style="display:block;" onclick="showOtherOptions()">SEE OTHER OPTIONS</button>
+    <button class="btn-outline" style="display:block;" onclick="browseAllFlow=true;goToPrograms()">BROWSE ALL PROGRAMS</button>
   </div>
 </div>
 
@@ -2199,8 +2281,8 @@
     <div></div>
   </div>
   <div class="content">
-    <h1 class="screen-title" style="font-weight:700;">Create Account</h1>
-    <p class="screen-subtitle" id="acct-subtitle">Welcome! Let's set up your account.</p>
+    <h1 class="screen-title" style="font-weight:700;">First, let's create<br>your account.</h1>
+    <p class="screen-subtitle" id="acct-subtitle" style="margin-bottom:20px;">Join thousands of women already training with Move With Us. Create your account to get started.</p>
     <div class="acct-avatar-wrap">
       <div class="acct-avatar">
         🧘‍♀️
@@ -2276,7 +2358,7 @@
         <li class="iap-feature">Flexible monthly access</li>
       </ul>
     </div>
-    <p class="iap-desc">Includes 20+ structured training Programs, full nutrition features with custom meal guides and 1,500+ recipes, plus in-app tracking for workouts, steps, macros, sleep and more — all in one place.</p>
+    <p class="iap-desc">Includes 20+ structured training Programs, full nutrition features with custom meal guides and 1,500+ recipes, plus in-app tracking for workouts, steps, macros, sleep and more. All in one place.</p>
   </div>
   <div class="iap-footer">
     <button class="btn-primary" style="margin-bottom:10px;" onclick="onIAPComplete()">PURCHASE NOW</button>
@@ -2296,7 +2378,7 @@
   <div class="celebration-inner">
     <div class="celebration-check">🎉</div>
     <h1 class="celebration-title" id="celebration-title">You're all set,<br><em>let's go!</em></h1>
-    <p class="celebration-sub" id="celebration-sub">Your Program is ready and waiting. Every workout, every meal guide — it's all yours. Now it's time to show up.</p>
+    <p class="celebration-sub" id="celebration-sub">Your Program is ready and waiting. Every workout, every meal guide. It's all yours. Now it's time to show up.</p>
     <div class="celebration-Program-card" id="cel-Program-card">
       <div class="cel-card-glow"></div>
       <div class="cel-card-label">Your Program</div>
@@ -2310,7 +2392,7 @@
     </div>
   </div>
   <div class="cta-footer" style="text-align:center;">
-    <button class="celebration-cta" onclick="goToHome()">START MY PROGRAM</button>
+    <button class="celebration-cta" onclick="onCelebrationContinue()">START MY PROGRAM</button>
     <div class="celebration-later" onclick="goToPrograms()">BROWSE ALL PROGRAMS</div>
   </div>
 </div>
@@ -2470,6 +2552,7 @@
 
   /* ── State ── */
   let skippedQuiz = false;
+  let browseAllFlow = false;
 
   const answers = {
     goal: null,
@@ -2478,6 +2561,7 @@
     struggle: null,
     pregnant: null,
     diet: [],
+    activity: null,
     height: null,
     weight: null,
   };
@@ -2487,12 +2571,13 @@
   /* ── Screen map (7 steps) ── */
   const screenSteps = {
     'screen-goal':     1,
-    'screen-style':    2,
-    'screen-level':    3,
-    'screen-struggle': 4,
-    'screen-pregnant': 5,
-    'screen-diet':     6,
-    'screen-stats':    7,
+    'screen-activity': 2,
+    'screen-style':    3,
+    'screen-level':    4,
+    'screen-struggle': 5,
+    'screen-pregnant': 6,
+    'screen-diet':     7,
+    'screen-stats':    8,
   };
 
   /* ── Navigation ── */
@@ -2518,11 +2603,20 @@
     }
     // Trigger account field validation when entering account screen
     if (id === 'screen-account') onAcctInput();
+    // Update stats button label for skip flow
+    if (id === 'screen-stats') {
+      const btn = document.getElementById('btn-stats');
+      if (btn) btn.textContent = skippedQuiz ? 'LET\'S GO' : 'FIND MY PROGRAM';
+    }
   }
 
   function goBack() {
     if (navHistory.length > 1) {
       navHistory.pop();
+      // Skip over loading screens so back never lands on them
+      while (navHistory.length > 1 && navHistory[navHistory.length - 1].includes('loading')) {
+        navHistory.pop();
+      }
       const prev = navHistory[navHistory.length - 1];
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       const target = document.getElementById(prev);
@@ -2535,14 +2629,22 @@
   }
 
   /* ── Progress bar ── */
+  const skipQuizSteps = {
+    'screen-goal':     1,
+    'screen-activity': 2,
+    'screen-diet':     3,
+    'screen-stats':    4,
+  };
+
   function renderProgress(screenId) {
-    const step = screenSteps[screenId];
+    const map   = (skippedQuiz && skipQuizSteps[screenId]) ? skipQuizSteps : screenSteps;
+    const step  = map[screenId];
     if (!step) return;
     const screenEl = document.getElementById(screenId);
     const wrap = screenEl ? screenEl.querySelector('.progress-wrap') : null;
     if (!wrap) return;
     wrap.innerHTML = '';
-    const total = Object.keys(screenSteps).length; // 8
+    const total = Object.keys(map).length;
     for (let i = 1; i <= total; i++) {
       const dot = document.createElement('div');
       dot.className = 'progress-dot' + (i <= step ? ' done' : '');
@@ -2563,19 +2665,19 @@
 
   /* ── Multi-select diet chips ── */
   function toggleDiet(value, el) {
-    if (value === 'no-pref') {
+    if (value === 'no-restrictions') {
       if (el.classList.contains('selected')) {
         el.classList.remove('selected');
-        answers.diet = answers.diet.filter(v => v !== 'no-pref');
+        answers.diet = answers.diet.filter(v => v !== 'no-restrictions');
       } else {
         document.querySelectorAll('#screen-diet .diet-chip').forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
-        answers.diet = ['no-pref'];
+        answers.diet = ['no-restrictions'];
       }
     } else {
-      const noPrefChip = document.getElementById('chip-no-pref');
-      if (noPrefChip) noPrefChip.classList.remove('selected');
-      answers.diet = answers.diet.filter(v => v !== 'no-pref');
+      const noRestrictionsChip = document.getElementById('chip-no-restrictions');
+      if (noRestrictionsChip) noRestrictionsChip.classList.remove('selected');
+      answers.diet = answers.diet.filter(v => v !== 'no-restrictions');
 
       if (el.classList.contains('selected')) {
         el.classList.remove('selected');
@@ -2655,21 +2757,32 @@
     showScreen('screen-almost');
   }
 
+  /* ── Skip-flow mini-quiz routing ── */
+  function onCelebrationContinue() {
+    if (skippedQuiz) { showScreen('screen-goal'); }
+    else { goToHome(); }
+  }
+  function onActivityContinue() {
+    if (skippedQuiz) { showScreen('screen-diet'); }
+    else { showScreen('screen-style'); }
+  }
+  function onStatsContinue() {
+    if (skippedQuiz) { startMealLoading(); }
+    else { startLoading(); }
+  }
+
   /* ── Account creation ── */
   function onAccountCreated() {
     if (skippedQuiz) {
-      showScreen('screen-iap');
+      browseAllFlow = true;
+      goToPrograms();
     } else {
       showScreen('screen-goal');
     }
   }
 
   function onIAPComplete() {
-    if (skippedQuiz) {
-      goToPrograms();
-    } else {
-      showScreen('screen-celebration');
-    }
+    showScreen('screen-celebration');
   }
   function onAcctInput() {
     const first = document.getElementById('acct-firstname').value.trim();
@@ -2730,7 +2843,7 @@
     document.getElementById('rec-prog-name').textContent = p.name;
     document.getElementById('rec-prog-tagline').textContent = p.tagline;
     document.getElementById('rec-match-text').innerHTML =
-      `<strong>98% match for you.</strong> Based on your goal to ${p.match} — this program is built exactly for where you are right now.`;
+      `<strong>98% match for you.</strong> Based on your goal to ${p.match}. This Program is built exactly for where you are right now.`;
 
     const statsRow = document.getElementById('rec-stats-row');
     statsRow.children[0].querySelector('.rec-stat-val').textContent = p.weeks;
@@ -2745,6 +2858,37 @@
        <div class="cel-chip">${p.days} days/week</div>
        <div class="cel-chip">${p.mins} min</div>
        <div class="cel-chip">${p.goal}</div>`;
+  }
+
+  /* ── Meal guide loading sequence (skip flow) ── */
+  function startMealLoading() {
+    showScreen('screen-loading-meal');
+    const steps  = [1, 2, 3, 4];
+    const delays = [400, 1000, 1700, 2400];
+    const dones  = [900, 1600, 2300, 3000];
+    const fills  = [20, 45, 70, 95];
+
+    const bar = document.getElementById('loading-bar-meal');
+    steps.forEach(i => {
+      const el = document.getElementById('mlstep-' + i);
+      el.classList.remove('visible', 'done');
+    });
+    bar.style.width = '0%';
+
+    delays.forEach((delay, idx) => {
+      setTimeout(() => {
+        document.getElementById('mlstep-' + steps[idx]).classList.add('visible');
+        bar.style.width = fills[idx] + '%';
+      }, delay);
+      setTimeout(() => {
+        document.getElementById('mlstep-' + steps[idx]).classList.add('done');
+      }, dones[idx]);
+    });
+
+    setTimeout(() => {
+      bar.style.width = '100%';
+      setTimeout(() => goToHome(), 400);
+    }, 3400);
   }
 
   /* ── Loading sequence ── */
@@ -2865,7 +3009,12 @@
     answers.goal = key;
     answers.pregnant = 'no';
     updateRecommendation();
-    goToHome();
+    if (browseAllFlow) {
+      browseAllFlow = false;
+      showScreen('screen-almost');
+    } else {
+      goToHome();
+    }
   }
 
   /* ── Init ── */
